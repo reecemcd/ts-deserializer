@@ -6,7 +6,7 @@ Typescript library for deserializing one object type to another.
 
 <p align="center">
     <a href="https://badge.fury.io/js/ts-deserializable" target="_blank"><img src="https://badge.fury.io/js/ts-deserializer.svg" alt="npm version" height="18"></a>
-    <a href="https://npmjs.org/ts-deserializer" target="_blank"><img src="https://img.shields.io/npm/dt/ts-deserializable.svg" alt="npm downloads" ></a>
+    <a href="https://npmjs.org/ts-deserializer" target="_blank"><img src="https://img.shields.io/npm/dt/ts-deserializer.svg" alt="npm downloads" ></a>
     <a href="https://github.com/reecemcd/ts-deserializer/blob/master/LICENSE" target="_blank"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="mit license" height="18"></a>
     <a href="https://circleci.com/gh/reecemcd/ts-deserializer" target="_blank"><img src="https://circleci.com/gh/reecemcd/ts-deserializer.svg?style=svg" alt="mit license" height="18"></a>
 </p>
