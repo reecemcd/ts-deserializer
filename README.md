@@ -148,7 +148,7 @@ const result = new NumberStringToNumber().deserialize({ someStrings: { thisStrin
 
 ### Exported Objects
 * [`Deserializable`](#Deserializable) - _interface_
-* [`Deserializer`](#Deserializer<T1,T2>) - _class_
+* [`Deserializer<T1,T2>`](#Deserializer) - _class_
 * [`DeserializerConfig`](#DeserializerConfig) - _interface_
 * [`DeserializerLogLevel`](#DeserializerLogLevel) - _enum_
 * [`resolve`](#resolve) - _factory function_
@@ -169,10 +169,10 @@ class User implements Deserializable<User> {
 
 <br />
 
-### `Deserializer<T1,T2>`
+### `Deserializer`
 > Class
 
-The Deserializer class is used to deserialize objects of type `T1` to type `T2`. It's only parameter is a [`DeserializerConfig`](#DeserializerConfig) seen below.
+The Deserializer<T1,T2> class is used to deserialize objects of type `T1` to type `T2`. It's only parameter is a [`DeserializerConfig`](#DeserializerConfig) seen below.
 
 <br />
 
@@ -185,7 +185,7 @@ A `Deserializer` constructor requires a `DeserializerConfig` as it's only parame
 |----------|------|---------|-------------|
 | `logLevel` | [`DeserializerLogLevel`](#DeserializerLogLevel) | `DeserializerLogLevel.Warn` | Used to set the default log level for this deserializer. |
 | `customError` | `any` | `undefined` | Used to set the type of error thrown when the `logLevel` is set to `DeserializerLogLevel.Throw`. |
-| `resolvers` | [`DeserializerResolver[]`](#DeserializerResolverBuilder) | `[]` | Array of resolvers that configure how a [`Deserializer`](#Deserializer<T1,T2>) deserializes properties from type `T1` to type `T2`. |
+| `resolvers` | [`DeserializerResolver[]`](#DeserializerResolverBuilder) | `[]` | Array of resolvers that configure how a [`Deserializer`](#Deserializer) deserializes properties from type `T1` to type `T2`. |
 
 <br />
 
@@ -213,7 +213,7 @@ The resolve function is a useful factory for quickly creating [`DeserializerReso
 ### `DeserializerResolverBuilder`
 > Builder Class
 
-A DeserializerResolverBuilder is the builder class used to define resolvers that can be passed to a [`Deserializer`](#Deserializer<T1,T2>) via a [`DeserializerConfig`](#DeserializerConfig).
+A DeserializerResolverBuilder is the builder class used to define resolvers that can be passed to a [`Deserializer`](#Deserializer) via a [`DeserializerConfig`](#DeserializerConfig).
 
 There are four types of operators each outlined below:
 
@@ -229,7 +229,7 @@ The `fallback` operator is required. It serves as the "build" method for this bu
 |----------|-------------|
 | `resolve(prop: string)` | Defines the property on `T1` that data should be deserialized from. By default it also sets the property on `T2` that data should be deserialized to this same value. Use the `to()` operator to override. This operator is usually not directly called as the [`resolve` factory](#resolve) will call it for you. |
 | `to(prop: string)` | Defines the property on `T2` that data should be deserialized to this same value. Overrides the value set by `resolve()` above. |
-| `fallback(fallbackValue: any | Function = undefined)` | The fallback value is returned anytime a prop is undefined, an error occurs in the operator chain, or a value does not pass validation. If a function is provided, it will be evaluated every time a fallback value is needed. Whatever value a fallback function returns will be passed as the fallback value. |
+| `fallback(fallbackValue: any \| Function = undefined)` | The fallback value is returned anytime a prop is undefined, an error occurs in the operator chain, or a value does not pass validation. If a function is provided, it will be evaluated every time a fallback value is needed. Whatever value a fallback function returns will be passed as the fallback value. |
 
 #### Functional Operators
 
@@ -256,7 +256,7 @@ Validator can be used to catch when certain conditions are not met. If any valid
 
 #### Logging Overrides
 
-Logging overrides can be used to set custom logging settings for a given resolver. The logging settings set at the [`Deserializer`](#Deserializer<T1,T2>) level will be overridden with these. See [`DeserializerLogLevel`](#DeserializerLogLevel) for a list of available log levels.
+Logging overrides can be used to set custom logging settings for a given resolver. The logging settings set at the [`Deserializer`](#Deserializer) level will be overridden with these. See [`DeserializerLogLevel`](#DeserializerLogLevel) for a list of available log levels.
 
 | Operator | Description |
 |----------|-------------|
