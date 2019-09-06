@@ -93,7 +93,7 @@ class MyFormData implements Deserializable<MyFormData> {
   option2: string;
   option3: string;
 
-  deserialize(formData: MyFormData): MyFormData {
+  deserialize(formData: OtherFormData): MyFormData {
     let deserializer = new Deserializer<OtherFormData, MyFormData>({
       logLevel: DeserializerLogLevel.Error,
       resolvers: [
