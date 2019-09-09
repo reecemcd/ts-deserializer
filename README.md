@@ -159,7 +159,7 @@ const result = new NumberStringToNumber().deserialize({ someStrings: { thisStrin
 
 `Deserializable` is an interface that requires a `deserialize(obj: any): any` method. It provides a recommended pattern for deserializing classes.
 
-This class can also be extended or implemented without the use of ts-deserializable decorators and will still be compatible with classes that do.
+This class can also be implemented without the use of ts-deserializable decorators and will still be compatible with classes that do.
 
 ```Typescript
 class User implements Deserializable<User> { 
@@ -173,6 +173,13 @@ class User implements Deserializable<User> {
 > Class
 
 The Deserializer<T1,T2> class is used to deserialize objects of type `T1` to type `T2`. It's only parameter is a [`DeserializerConfig`](#DeserializerConfig) seen below.
+
+| Methods | Returns | Description |
+|---------|---------|-------------|
+| `addResolver(resolver: DeserializerResolver)` | `void` | Adds a resolver object to the list of resolvers this Deserializer passes the input object through upon deserialization. |
+| `addResolvers(resolvers: DeserializerResolver[])` | `void` | Adds a list of resolver objects to the list of resolvers this Deserializer passes the input object through upon deserialization. |
+| `setResolvers(resolvers: DeserializerResolver[])` | `void` | Sets the list of resolvers this Deserializer passes the input object through upon deserialization. |
+| `deserialize(from: T1, to: T2)` | `T2` | Passes the `from` and `to` inputs through all resolver pipelines. |
 
 <br />
 
@@ -248,11 +255,11 @@ Validator can be used to catch when certain conditions are not met. If any valid
 
 | Operator | Description |
 |----------|-------------|
-| `validate(func: Function)` | Marks the property as invalid if the provided function returns a falsey value, |
-| `validateString()` | Marks the property as invalid if its `typeof` result does not equal `"string"`, |
-| `validateNumber()` | Marks the property as invalid if its `typeof` result does not equal `"number"` and the value is not `NaN`, |
-| `validateBoolean()` | Marks the property as invalid if its `typeof` result does not equal `"boolean"`, |
-| `validateArray()` | Marks the property as invalid if it is not an array, |
+| `validate(func: Function)` | Marks the property as invalid if the provided function returns a falsey value. |
+| `validateString()` | Marks the property as invalid if its `typeof` result does not equal `"string"`. |
+| `validateNumber()` | Marks the property as invalid if its `typeof` result does not equal `"number"` and the value is not `NaN`. |
+| `validateBoolean()` | Marks the property as invalid if its `typeof` result does not equal `"boolean"`. |
+| `validateArray()` | Marks the property as invalid if it is not an array. |
 
 #### Logging Overrides
 

@@ -17,19 +17,39 @@ export class Deserializer<T1, T2> {
     this.resolvers = [ ...config.resolvers ] || [];
   }
 
-  public addResolver(resolver: DeserializerResolver) {
+  /**
+   * Adds a resolver object to the list of resolvers this Deserializer 
+   * passes the input object through upon deserialization.
+   * @param resolver 
+   */
+  public addResolver(resolver: DeserializerResolver): void {
     this.resolvers = [ ...this.resolvers, resolver ];
   }
 
-  public addResolvers(resolvers: DeserializerResolver[]) {
+  /**
+   * Adds a list of resolver objects to the list of resolvers this 
+   * Deserializer passes the input object through upon deserialization.
+   * @param resolvers 
+   */
+  public addResolvers(resolvers: DeserializerResolver[]): void {
     this.resolvers = [ ...this.resolvers, ...resolvers ];
   }
 
-  public setResolvers(resolvers: DeserializerResolver[]) {
+  /**
+   * Sets the list of resolvers this Deserializer passes the input 
+   * object through upon deserialization.
+   * @param resolvers 
+   */
+  public setResolvers(resolvers: DeserializerResolver[]): void {
     this.resolvers = resolvers;
   }
 
-  public deserialize(from: T1, to: T2) {
+  /**
+   * Passes the `from` and `to` inputs through all resolver pipelines.
+   * @param from 
+   * @param to 
+   */
+  public deserialize(from: T1, to: T2): T2 {
     // Resolve all resolvers
     this.resolvers.forEach((resolver) => {
       let fromValue = this.getNestedPropValue(from, resolver.fromProp);
@@ -78,11 +98,22 @@ export class Deserializer<T1, T2> {
     return to;
   }
 
+  /**
+   * Returns the value of a nested property
+   * @param obj 
+   * @param propPath 
+   * @param separator 
+   */
   private getNestedPropValue(obj: any, propPath: string, separator = '.') {
     let pathList = propPath.split(separator);
     return pathList.reduce((prev, curr) => prev && prev[curr], obj);
   };
 
+  /**
+   * Returns the value of the fallback, unless it is a function. 
+   * If it is a function the return value of the function is returned.
+   * @param fallback 
+   */
   private getFallback(fallback) {
     return (typeof fallback === 'function')
       ? fallback()
