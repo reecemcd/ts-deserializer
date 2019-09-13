@@ -157,6 +157,7 @@ export class DeserializerResolverBuilder {
    */
   public setLogLevel(logLevel: DeserializerLogLevel) {
     this.resolver.setLogLevel(logLevel);
+    return this;
   }
 
   /**
@@ -165,6 +166,7 @@ export class DeserializerResolverBuilder {
    */
   public setCustomError(customError: any) {
     this.resolver.setCustomError(customError);
+    return this;
   }
 
   /**

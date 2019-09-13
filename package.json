@@ -1,6 +1,6 @@
 {
   "name": "ts-deserializer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Typescript library for deserializing one object type to another.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
