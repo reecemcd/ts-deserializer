@@ -159,7 +159,7 @@ const result = new NumberStringToNumber().deserialize({ someStrings: { thisStrin
 
 `Deserializable` is an interface that requires a `deserialize(obj: any): any` method. It provides a recommended pattern for deserializing classes.
 
-This class can also be implemented without the use of ts-deserializable decorators and will still be compatible with classes that do.
+This class can also be implemented without the use of ts-deserializers and will still be compatible with classes that do.
 
 ```Typescript
 class User implements Deserializable<User> { 
